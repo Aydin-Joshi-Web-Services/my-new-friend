@@ -39,17 +39,17 @@ export default function AboutPage() {
                     
                     <div>
                       <h4 className="font-semibold mb-1">Education</h4>
-                      <p className="text-sm text-gray-600">{companion.education}</p>
+                      <p className=" text-gray-600">{companion.education}</p>
                     </div>
                     
                     <div>
                       <h4 className="font-semibold mb-1">Background Checks</h4>
-                      <p className="text-sm text-gray-600">{companion.background}</p>
+                      <p className=" text-gray-600">{companion.background}</p>
                     </div>
                     
                     <div>
                       <h4 className="font-semibold mb-1">Hobbies</h4>
-                      <p className="text-sm text-gray-600">{companion.hobbies}</p>
+                      <p className=" text-gray-600">{companion.hobbies}</p>
                     </div>
                   </CardContent>
                 </div>

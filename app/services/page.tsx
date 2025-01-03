@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Computer, Pill, PersonStanding, Car, Home, Calendar, Book, Gamepad, Plane } from "lucide-react";
+import { Computer, Pill, PersonStanding, Car, Home, Calendar, Book, Gamepad, Plane, PersonStandingIcon, PanelsTopLeft } from "lucide-react";
 
 const services = [
   {
@@ -15,17 +15,17 @@ const services = [
   {
     title: "Active Lifestyle",
     icon: PersonStanding,
-    description: "Engaging walks, dining out experiences, and visits to libraries, museums, movies, and cultural shows."
+    description: "Promoting physical activity and outdoor hobbies like nature walks, bird watching, golfing, and capturing moments through photography."
   },
   {
-    title: "Vehicle Care",
+    title: "Vehicle Maintenance",
     icon: Car,
-    description: "Complete automobile maintenance support including car detailing, oil changes, tire services, and routine maintenance visits."
+    description: "Provide support for automobile maintenance including booking appointments for car detailing, oil changes, tire services, and routine maintenance visits."
   },
   {
     title: "Home Services",
     icon: Home,
-    description: "Light housekeeping, yard maintenance, and general home care to keep living spaces comfortable and well-maintained."
+    description: "Light housekeeping and general home care to keep living spaces comfortable and well-maintained. Support for booking appointments for yard maintenance and snow removal."
   },
   {
     title: "Schedule Management",
@@ -38,15 +38,15 @@ const services = [
     description: "Reading sessions, letter writing, and engaging conversations to maintain mental acuity and social connection."
   },
   {
-    title: "Entertainment",
-    icon: Gamepad,
-    description: "Interactive entertainment including board games, social activities, and recreational outings."
+    title: "Social Engagements",
+    icon: PanelsTopLeft,
+    description: "Dining out experiences, visits to libraries, museums, movies, cultural shows, events, board games, light travel, and recreational outings."
   },
   {
-    title: "Travel Companion",
-    icon: Plane,
-    description: "Light travel companionship services ensuring comfortable and supported journeys."
-  }
+    title: "Entertainment",
+    icon: Gamepad,
+    description: "Dining out experiences, visits to libraries, museums, movies, cultural shows, events, board games, light travel, and recreational outings."
+  },
 ];
 
 export default function ServicesPage() {

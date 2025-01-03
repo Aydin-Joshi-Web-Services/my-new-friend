@@ -5,8 +5,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import { NextFont } from "next/dist/compiled/@next/font";
 
-export function Navbar() {
+export function Navbar({ font }: { font: NextFont }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -17,11 +18,11 @@ export function Navbar() {
             <Image
               src="/Logo.png"
               alt="Logo"
-              width={96}
-              height={96}
+              width={150}
+              height={150}
               className="w-16 h-16 sm:w-20 sm:h-20"
             />
-            <span className="text-xl sm:text-2xl font-semibold tracking-tight">
+            <span className={`text-3xl sm:text-2xl font-semibold tracking-tight ${font.className}`}>
               My New Friend
             </span>
           </Link>
@@ -36,15 +37,12 @@ export function Navbar() {
             <Link href="/services" className="text-base font-medium hover:text-brand-200 transition-colors">
               Services
             </Link>
-            <Link href="/what-we-offer" className="text-base font-medium hover:text-brand-200 transition-colors">
-              What We Offer
+            <Link href="/testimonials" className="text-base font-medium hover:text-brand-200 transition-colors">
+              Testimonials
             </Link>
-            <Link href="/contact" className="text-base font-medium hover:text-brand-200 transition-colors">
-              Contact
-            </Link>
-            <Link href="/pricing">
-              <Button variant="outline" size="lg" className="bg-white text-brand-600">
-                Get Pricing
+            <Link href="/quote">
+              <Button variant="outline" size="lg" className="bg-white text-black">
+                Get a Quote
               </Button>
             </Link>
           </div>
@@ -58,7 +56,7 @@ export function Navbar() {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden py-4">
+          <div className="block md:hidden py-4">
             <nav className="flex flex-col space-y-4">
               <Link href="/" className="px-4 py-2 text-base font-medium hover:bg-brand-700 rounded-md">
                 Home
@@ -69,15 +67,12 @@ export function Navbar() {
               <Link href="/services" className="px-4 py-2 text-base font-medium hover:bg-brand-700 rounded-md">
                 Services
               </Link>
-              <Link href="/what-we-offer" className="px-4 py-2 text-base font-medium hover:bg-brand-700 rounded-md">
-                What We Offer
+              <Link href="/testimonials" className="px-4 py-2 text-base font-medium hover:bg-brand-700 rounded-md">
+                Testimonials
               </Link>
-              <Link href="/contact" className="px-4 py-2 text-base font-medium hover:bg-brand-700 rounded-md">
-                Contact
-              </Link>
-              <Link href="/pricing" className="px-4 py-2">
+              <Link href="/quote" className="px-4 py-2">
                 <Button variant="outline" className="w-full bg-white text-brand-600">
-                  Get Pricing
+                  Get a Quote
                 </Button>
               </Link>
             </nav>

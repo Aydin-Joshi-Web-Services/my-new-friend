@@ -9,7 +9,7 @@ import { calculatePrice } from "@/lib/pricing";
 
 export default function PricingPage() {
   const [postalCode, setPostalCode] = useState("");
-  const [adults, setAdults] = useState(1);
+  const [adults, setAdults] = useState<number>(0);
   const [price, setPrice] = useState<number | null>(null);
 
   const handleCalculatePrice = () => {
@@ -38,7 +38,7 @@ export default function PricingPage() {
               </label>
               <Input
                 type="text"
-                placeholder="Enter postal code"
+                placeholder="XXX-XXX"
                 value={postalCode}
                 onChange={(e) => setPostalCode(e.target.value)}
                 className="uppercase"
@@ -54,7 +54,7 @@ export default function PricingPage() {
                 type="number"
                 min="1"
                 value={adults}
-                onChange={(e) => setAdults(parseInt(e.target.value) || 1)}
+                onChange={(e) => setAdults(parseInt(e.target.value))}
               />
             </div>
 

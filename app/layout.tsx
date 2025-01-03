@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Barlow, Inter, Playfair_Display } from 'next/font/google';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -10,6 +10,11 @@ const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter'
 });
+
+const barlow = Barlow({
+  subsets: ['latin'],
+  weight: "500",
+})
 
 const playfair = Playfair_Display({ 
   subsets: ['latin'],
@@ -36,7 +41,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex min-h-screen flex-col">
-            <Navbar />
+            <Navbar font={barlow} />
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
