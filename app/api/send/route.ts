@@ -8,7 +8,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 
 export async function POST(req: Request) {
-  const { name, email, phone, postalCode, preferredContact, startDate, services, message } = await req.json();
+  const { name, email, phone, postalCode, preferredContact, startDate, services, frequency, message } = await req.json();
   
   try {
     await resend.emails.send({
@@ -25,6 +25,7 @@ export async function POST(req: Request) {
             <p><strong>Preferred Contact:</strong> ${preferredContact}</p>
             <p><strong>Start Date:</strong> ${startDate}</p>
             <p><strong>Services:</strong> ${services.map((service: any) => `<span style="background-color: #f0f0f0; padding: 2px 6px; border-radius: 4px; margin-right: 4px;">${service}</span>`).join('')}</p>
+            <p><strong>Frequency:</strong> ${frequency}</p>
             <p><strong>Message:</strong></p>
             <p style="border-left: 4px solid #ccc; padding-left: 8px; margin: 12px 0;">${message}</p>
             <footer style="margin-top: 16px; font-size: 0.9em; color: #777;">

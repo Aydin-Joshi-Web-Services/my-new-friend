@@ -14,13 +14,14 @@ export function Footer() {
               <li><Link href="/" className="hover:text-gray-200">Home</Link></li>
               <li><Link href="/about" className="hover:text-gray-200">About Us</Link></li>
               <li><Link href="/services" className="hover:text-gray-200">Services</Link></li>
+              <li><Link href="/testimonials" className="hover:text-gray-200">Testimonials</Link></li>
+              <li><Link href="/quote" className="hover:text-gray-200">Get a Quote</Link></li>
             </ul>
           </div>
 
           <div>
             <h3 className="font-semibold mb-4">Contact</h3>
             <ul className="space-y-2 text-lg">
-              <li>York Region, Ontario</li>
               <li>info@mynewfriend.ca</li>
             </ul>
           </div>
@@ -28,7 +29,7 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Service Areas</h3>
             <ul className="space-y-2 text-lg">
-              <li>York Region</li>
+              <li>York Region, Ontario CA</li>
             </ul>
           </div>
 
@@ -50,7 +51,7 @@ export function Footer() {
           <p className="mt-2">
             Powered by{" "}
             <Link href="https://aydinjoshi.com" target="_blank">
-              <span className="text-zinc-300 underline hover:text-blue-300">
+              <span className="text-zinc-300 underline hover:text-zinc-700">
                 Aydin Joshi Web Services
               </span>
             </Link>

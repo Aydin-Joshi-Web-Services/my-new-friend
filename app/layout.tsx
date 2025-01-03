@@ -22,8 +22,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'My New Friend - Senior Companion Services in Ontario',
-  description: 'Professional companion services for aging adults in Ontario, providing companionship, support, and care.',
+  title: 'My New Friend - Senior Companion Services',
+  description: 'Professional companion services for aging adults, providing companionship, support, and care.',
 };
 
 export default function RootLayout({

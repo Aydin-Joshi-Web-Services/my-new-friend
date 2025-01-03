@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const services = [
   { id: "technology-support", label: "Technology Support" },
@@ -15,16 +16,17 @@ const services = [
   { id: "active-lifestyle", label: "Active Lifestyle" },
   { id: "vehicle-maintenance", label: "Vehicle Maintenance" },
   { id: "home-services", label: "Home Services" },
-  { id: "schedule-management", label: "Schedule Management" },
+  { id: "daily-activities", label: "Daily Activities" },
   { id: "mental-engagement", label: "Mental Engagement" },
   { id: "social-engagement", label: "Social Engagements" },
-  { id: "entertainment", label: "Entertainment" }
+  { id: "entertainment", label: "Entertainment" },
 ];
 
 export default function QuoteForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [visitFrequency, setVisitFrequency] = useState("");
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -39,6 +41,7 @@ export default function QuoteForm() {
       preferredContact: formData.get('preferredContact'),
       startDate: formData.get('startDate'),
       services: selectedServices,
+      frequency: visitFrequency,
       message: formData.get('message'),
       subject: 'New Quote Request'
     };
@@ -52,9 +55,9 @@ export default function QuoteForm() {
 
       if (response.ok) {
         setSuccess(true);
-        console.log(response)
         event.currentTarget.reset();
         setSelectedServices([]);
+        setVisitFrequency("");
       }
     } catch (error) {
       console.error(error);
@@ -72,38 +75,88 @@ export default function QuoteForm() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-4 text-lg">
-              <Input
-                required
-                name="name"
-                placeholder="Your name"
-                disabled={loading}
-              />
-              <Input
-                required
-                type="email"
-                name="email"
-                placeholder="Your email"
-                disabled={loading}
-              />
-              <Input
-                required
-                type="tel"
-                name="phone"
-                placeholder="Phone number"
-                disabled={loading}
-              />
-              <Input
-                required
-                name="postalCode"
-                placeholder="Postal code"
-                pattern="[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]"
-                title="Please enter a valid Canadian postal code (e.g., M5V 2T6)"
-                disabled={loading}
-              />
+            <div className="space-y-6 text-lg">
+              <div className="space-y-4">
+                <h3 className="font-medium text-lg">Basic Information</h3>
+                <div className="space-y-2">
+                  <Label htmlFor="name">Full Name</Label>
+                  <Input
+                    id="name"
+                    required
+                    name="name"
+                    placeholder="Name"
+                    disabled={loading}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email Address</Label>
+                  <Input
+                    id="email"
+                    required
+                    type="email"
+                    name="email"
+                    placeholder="your.email@example.com"
+                    disabled={loading}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Phone Number</Label>
+                  <Input
+                    id="phone"
+                    required
+                    type="tel"
+                    name="phone"
+                    placeholder="(123) 456-7890"
+                    disabled={loading}
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h3 className="font-medium text-lg">Location & Schedule</h3>
+                <div className="space-y-2">
+                  <Label htmlFor="postalCode">Postal Code</Label>
+                  <Input
+                    id="postalCode"
+                    required
+                    name="postalCode"
+                    placeholder="M5V 2T6"
+                    pattern="[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]"
+                    title="Please enter a valid Canadian postal code (e.g., M5V 2T6)"
+                    disabled={loading}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="startDate">Preferred Start Date</Label>
+                  <Input
+                    id="startDate"
+                    required
+                    type="date"
+                    name="startDate"
+                    disabled={loading}
+                  />
+                </div>
+                <div className="space-y-2">
+  <Label htmlFor="frequency">Visit Frequency</Label>
+  <Select 
+    value={visitFrequency} 
+    onValueChange={setVisitFrequency}
+  >
+    <SelectTrigger className="bg-white">
+      <SelectValue placeholder="Select frequency" />
+    </SelectTrigger>
+    <SelectContent className="bg-white">
+      <SelectItem value="one-time">One Time</SelectItem>
+      <SelectItem value="weekly">Weekly</SelectItem>
+      <SelectItem value="monthly">Monthly</SelectItem>
+      <SelectItem value="custom">Custom Schedule</SelectItem>
+    </SelectContent>
+  </Select>
+</div>
+              </div>
               
               <div className="space-y-2">
-                <Label className="text-lg">Preferred Contact Method</Label>
+                <Label>Preferred Contact Method</Label>
                 <RadioGroup name="preferredContact" defaultValue="email">
                   <div className="flex space-x-4">
                     <div className="flex items-center space-x-2">
@@ -118,15 +171,8 @@ export default function QuoteForm() {
                 </RadioGroup>
               </div>
 
-              <Input
-                required
-                type="date"
-                name="startDate"
-                placeholder="Preferred start date"
-                disabled={loading}
-              />
-              <div className="space-y-2 py-3">
-                <Label className="text-lg">Services Needed (more than one)</Label>
+              <div className="space-y-4">
+                <Label className="text-lg">Services Needed (select multiple)</Label>
                 <div className="grid grid-cols-2 gap-4 text-lg">
                   {services.map((service) => (
                     <div key={service.id} className="flex items-center space-x-2">
@@ -146,12 +192,16 @@ export default function QuoteForm() {
                 </div>
               </div>
 
-              <Textarea
-                name="message"
-                placeholder="Additional details or requirements"
-                rows={4}
-                disabled={loading}
-              />
+              <div className="space-y-2">
+                <Label htmlFor="message">Additional Details</Label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  placeholder="Please share any specific or general information you may have..."
+                  rows={4}
+                  disabled={loading}
+                />
+              </div>
             </div>
 
             <Button type="submit" variant="outline" disabled={loading} className="w-full hover:bg-red-400 bg-red-500 text-white">

@@ -1,13 +1,14 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { StarIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const testimonials = [
   {
     name: "Amina Khan",
     role: "Daughter",
     image: "https://us.123rf.com/450wm/rawpixel/rawpixel1706/rawpixel170609371/79663628-indian-ethnicity-happy-woman-portrait.jpg?ver=6",
-    content: "The companion service has been invaluable for my mother. Ever since My New Friend came into her life, she has been so happy and it fills me with joy to see her like that.",
+    content: "The companion service has been invaluable for my mother. Ever since My New Friend came into her life, she has been so happy and it fills me with such joy to see her like that.",
     rating: 5
   },
   {
@@ -44,8 +45,9 @@ export default function Page() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Client Testimonials</h1>
           <p className="text-xl max-w-2xl mx-auto">
-            Hear from our clients and their families about their experiences with our companion services.
+            Hear from our clients and their families about their experiences with our companion service.
           </p>
+          <Button variant="outline" className="mt-6 bg-red-600 text-white text-lg">Submit a Testimonial</Button>
         </div>
       </div>
 
@@ -79,7 +81,7 @@ export default function Page() {
         <div className="text-center mt-16">
           <h2 className="text-3xl font-bold mb-6">Ready to Experience Our Service?</h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Join our community of satisfied clients and discover how we can enhance your loved one&apos;s quality of life.
+            Join our community of satisfied clients and discover how we can enhance your or your loved one&apos;s quality of life.
           </p>
           <a 
             href="/quote"
