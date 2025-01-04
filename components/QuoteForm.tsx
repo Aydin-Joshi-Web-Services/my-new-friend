@@ -152,6 +152,7 @@ export default function QuoteForm() {
       <SelectItem value="custom">Custom Schedule</SelectItem>
     </SelectContent>
   </Select>
+  <Label htmlFor="frequency" className="text-gray-600 font-light">* Each visit must be a minimum of 3 hours</Label>
 </div>
               </div>
               

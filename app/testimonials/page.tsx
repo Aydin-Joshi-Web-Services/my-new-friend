@@ -1,27 +1,30 @@
+"use client"
+
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { StarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+import { Dialog, DialogContent, DialogHeader, DialogOverlay, DialogTitle } from "@/components/ui/dialog";
+import { useState } from "react";
 
 const testimonials = [
   {
     name: "Amina Khan",
     role: "Daughter",
-    image: "https://us.123rf.com/450wm/rawpixel/rawpixel1706/rawpixel170609371/79663628-indian-ethnicity-happy-woman-portrait.jpg?ver=6",
     content: "The companion service has been invaluable for my mother. Ever since My New Friend came into her life, she has been so happy and it fills me with such joy to see her like that.",
     rating: 5
   },
   {
     name: "Emily Bolt",
     role: "Client",
-    image: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/07/GettyImages-1190822973-1024x683.jpg?w=1155&h=2969",
     content: "I look forward to my companion visits every week. They've helped me stay active and engaged with my hobbies and interests.",
     rating: 5
   },
   {
-    name: "Robert Miller",
+    name: "Rob Miller",
     role: "Family Member",
-    image: "https://media.istockphoto.com/id/544358212/photo/happy-laughing-man.jpg?s=612x612&w=0&k=20&c=FwJw5gqpUX3A8jOdsnIqQmSOxptVcYqHzaBkz6bvtMA=",
     content: "Finding this service was a blessing. The companions are professional, caring, and truly understand the needs of seniors.",
     rating: 5
   }
@@ -38,6 +41,38 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export default function Page() {
+  const [isDialogOpen, setDialogOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    stars: "",
+    quote: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "testimonial", ...formData }),
+      });
+      if (response.ok) {
+        alert("Testimonial submitted!");
+        setDialogOpen(false);
+        setFormData({ name: "", email: "", stars: "", quote: "" });
+      } else {
+        console.error("Failed to submit testimonial");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -47,7 +82,65 @@ export default function Page() {
           <p className="text-xl max-w-2xl mx-auto">
             Hear from our clients and their families about their experiences with our companion service.
           </p>
-          <Button variant="outline" className="mt-6 bg-red-600 text-white text-lg">Submit a Testimonial</Button>
+      <Button
+        variant="outline"
+        className="mt-6 bg-red-600 text-white text-lg"
+        onClick={() => setDialogOpen(true)}
+      >
+        Submit a Testimonial
+      </Button>
+
+     <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
+  <DialogOverlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50" />
+  <DialogContent className="flex items-center justify-center p-4 z-50">
+
+    <div className="bg-white rounded-lg shadow-lg w-full p-6">
+      <DialogHeader>
+        <DialogTitle className="text-xl font-bold text-gray-800 mb-4">
+          Submit a Testimonial
+        </DialogTitle>
+      </DialogHeader>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <Input
+          name="name"
+          placeholder="Name"
+          value={formData.name}
+          onChange={handleInputChange}
+          required
+        />
+        <Input
+          name="email"
+          type="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleInputChange}
+          required
+        />
+        <Input
+          name="stars"
+          type="number"
+          placeholder="Stars (1-5)"
+          min="1"
+          max="5"
+          value={formData.stars}
+          onChange={handleInputChange}
+          required
+        />
+        <Textarea
+          name="quote"
+          placeholder="Testimonial"
+          value={formData.quote}
+          onChange={handleInputChange}
+          required
+        />
+        <Button type="submit" className="bg-red-600 text-white w-full">
+          Submit
+        </Button>
+      </form>
+    </div>
+  </DialogContent>
+</Dialog>
+
         </div>
       </div>
 
@@ -58,13 +151,6 @@ export default function Page() {
             <Card key={testimonial.name} className="hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="flex flex-col items-center text-center">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    width={100}
-                    height={100}
-                    className="rounded-full mb-4"
-                  />
                   <StarRating rating={testimonial.rating} />
                   <p className="mt-4 text-lg text-gray-700">{testimonial.content}</p>
                   <div className="mt-4">

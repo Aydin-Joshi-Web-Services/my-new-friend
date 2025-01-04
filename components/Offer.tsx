@@ -7,17 +7,14 @@ export default function Offer() {
     <div className="py-12">
       <div className="container mx-auto px-4 max-w-4xl">
         <h1 className="text-4xl font-bold text-center mb-6">Our Mission</h1>
-          <p className="text-center mb-12">To provide trusted, professional, and quality senior companion services that enrich the lives of aging adults across Canada, fostering meaningful connections and ensuring their well-being with compassion and excellence.</p>
+          <p className="text-center mb-12">To provide trusted, professional, and quality senior companion services that enrich the lives of aging adults, fostering meaningful connections and ensuring their well-being with compassion and excellence.</p>
         <div className="space-y-8">
           <Card>
             <CardContent className="pt-6">
               <h2 className="text-2xl font-semibold mb-4">What We Do</h2>
               <div className="space-y-4">
                 <p>
-                 We understand that each individual has unique needs, interests, and preferences. That&apos;s why we take the time to match our clients with companions who share similar interests and personalities, fostering genuine connections and meaningful relationships.
-                </p>
-                <p>
-                Our companions provide emotional support, engage in stimulating conversations, and participate in activities that bring joy and purpose to our clients&apos; lives. Whether it&apos;s sharing a hobby, going for a walk, or simply enjoying each other&apos;s company, we&apos;re here to make every day more enjoyable.
+                Aging Adults in the community are often lonely as it may not always be possible for a loved one to be there resulting in isolation or depression. My New Friend offers professional companion services and takes the time to understand the unique needs, interests and preferences of their clients to foster genuine connections and strives to reverse the effects of loneliness by providing emotional support, engaging in stimulating conversations and participating in activities that bring joy and purpose to our clients&apos; lives. Whether it&apos;s sharing a hobby, going for a walk or running errands, we&apos;re here to help make everyday more enjoyable. 
                 </p>
               </div>
             </CardContent>

@@ -8,7 +8,7 @@ export default function ServicesPage() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Our Services</h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-          We offer a comprehensive* range of companion services designed to enrich quality of life for aging adults while while empowering them with independence.
+          We offer a range* of companion services designed to enrich quality of life for aging adults while empowering them with independence.
           </p>
         </div>
 

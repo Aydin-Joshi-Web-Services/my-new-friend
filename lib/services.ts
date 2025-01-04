@@ -4,7 +4,7 @@ export const services = [
     {
       title: "Technology Support",
       icon: Computer,
-      description: "Comprehensive assistance with computers, internet navigation, emails, texts, and general tech troubleshooting."
+      description: "Assistance with internet navigation, emails, texts, and basic troubleshooting."
     },
     {
       title: "Health & Wellness",
@@ -29,12 +29,12 @@ export const services = [
     {
       title: "Daily Activities",
       icon: Calendar,
-      description: "Coordinating, organizing and accompanying to various appointments and events",
+      description: "Coordinating, organizing and accompanying to various appointments and errands.",
     },
     {
       title: "Mental Engagement",
       icon: Book,
-      description: "Reading, writing, listening , games, puzzles and engaging conversations to maintain mental acuity."
+      description: "Reading, writing, listening, games, puzzles and engaging conversations to maintain mental acuity."
     },
     {
       title: "Social Engagements",

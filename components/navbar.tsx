@@ -31,9 +31,9 @@ export function Navbar({ font }: { font: NextFont }) {
             <Link href="/" className="text-base font-medium hover:text-brand-200 transition-colors">
               Home
             </Link>
-            <Link href="/about" className="text-base font-medium hover:text-brand-200 transition-colors">
+            {/*<Link href="/about" className="text-base font-medium hover:text-brand-200 transition-colors">
               About Us
-            </Link>
+            </Link>*/}
             <Link href="/services" className="text-base font-medium hover:text-brand-200 transition-colors">
               Services
             </Link>
@@ -61,9 +61,9 @@ export function Navbar({ font }: { font: NextFont }) {
               <Link href="/" className="px-4 py-2 text-base font-medium hover:bg-brand-700 rounded-md">
                 Home
               </Link>
-              <Link href="/about" className="px-4 py-2 text-base font-medium hover:bg-brand-700 rounded-md">
+              {/*<Link href="/about" className="px-4 py-2 text-base font-medium hover:bg-brand-700 rounded-md">
                 About Us
-              </Link>
+              </Link>*/}
               <Link href="/services" className="px-4 py-2 text-base font-medium hover:bg-brand-700 rounded-md">
                 Services
               </Link>
