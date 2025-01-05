@@ -36,7 +36,7 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4 text-lg">
-              <Link href="https://facebook.com" target="_blank" className="hover:text-gray-200">
+              <Link href="https://www.facebook.com/profile.php?id=61571369652333" target="_blank" className="hover:text-gray-200">
                 <Facebook size={24} />
               </Link>
               <Link href="https://instagram.com/mynewfriend.ca" target="_blank" className="hover:text-gray-200">
